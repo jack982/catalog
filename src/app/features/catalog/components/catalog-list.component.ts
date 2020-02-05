@@ -8,12 +8,10 @@ import {Device} from '../model/device';
          [ngClass]="{ 'active' : device.id === active?.id }"
          *ngFor="let device of devices"
          (click)="setActive.emit(device)">
-      <i class="fa" [ngClass]="{
-            'fa-android' : device.os === 'android',
-            'fa-apple' : device.os === 'ios'
-         }"></i>
+     <app-os-icon [os]="device.os"></app-os-icon>
       {{ device.label }}
       <div class="pull-right">
+        <app-price [price]="device.price"></app-price>
         <i class="fa fa-trash" (click)="deleteHandler($event, device)"></i>
       </div>
     </div>
